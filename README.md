@@ -1,1 +1,3 @@
-# flight-rider
+- npm i
+- npm run seed
+- npm run start
