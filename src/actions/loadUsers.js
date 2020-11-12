@@ -1,14 +1,14 @@
 import axios from "axios"
 const LOAD_USERS = "LOAD_USERS"
 
-function loadCities(users) {
+function loadUsers(users) {
   return {
     type: LOAD_USERS,
     payload: users
   }
 }
 
-export const loadCitiesDispatch = () => {
+export const loadUsersDispatch = () => {
   return async (dispatch) => {
     return await axios
       .get("/api/users")

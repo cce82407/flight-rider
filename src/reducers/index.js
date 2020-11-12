@@ -3,8 +3,8 @@ import cities from "./cityReducer"
 import users from "./userReducer"
 
 const rootReducer = combineReducers({
-  cities,
-  users,
+  cities: cities,
+  users: users,
 })
 
 export default rootReducer;
