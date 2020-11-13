@@ -39,7 +39,7 @@ export class App extends Component {
 
 
   onMarkerClick (props, marker, e){
-    console.log(props)
+    console.log(marker)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
