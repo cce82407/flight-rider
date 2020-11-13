@@ -12,6 +12,8 @@ export class App extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      userName: "",
+      arrivalCity: ""
     }
 
     this.displayMarkers = this.displayMarkers.bind(this);
@@ -31,7 +33,7 @@ export class App extends Component {
       return <Marker key={index} id={index} position={{
        lat: city.latitude,
        lng: city.longitude
-     }} name= {city.name}
+     }} name= {city.cityName}
      onClick={this.onMarkerClick} 
     />
     })
@@ -39,7 +41,7 @@ export class App extends Component {
 
 
   onMarkerClick (props, marker, e){
-    console.log(marker)
+    console.log(props)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -58,12 +60,105 @@ export class App extends Component {
 
   render() {
     console.log(this.props.cities)
-    return (
-        <Map
+     const style = {
+            width: '100%',
+            height: '75%',
+            borderColor: "black",
+      borderStyle: "solid",
+      borderWidth: "2px",
+     
+          }
+    const boxStyle = {
+      // margin: "600px",
+      // height: "30px",
+      // width: "20%%",
+      margin:"10px",
+      borderColor: "black",
+      borderStyle: "solid",
+      borderWidth: "2px",
+      padding: "10px",
+      borderRadius: "10px",
+      // flexGrow: "1",
+    }
+    const form = {
+      dislpay: "flex",
+      alignItems:"row",
+      justifyContent: "center",
+      topMargin: "30px",
+      width: "100%",
+    }
+    const span = {
+      fontFamily: "Sacramento",
+      fontSize: "50px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      height: "50px",
+      padding: "10px",
+    }
+    const text = {
+      fontFamily: "Nanum Gothic",
+      fontSize: "20px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      height: "30px"
+    }
+    const textContainer = {
+      backgroundColor: "#eb9788",
+    }
+    
+      
+          return (<div>
+            <div style = {textContainer}><div style = {span}>Welcome to Flight Rider</div>
+            <div style = {text}>Please enter your information in the boxes below to find a ride from the airport to your desired city.</div>
+            
+            <form style = {form}>
+              <input
+              style = {boxStyle} 
+              type = "text" 
+              name = "firstName" 
+              placeholder = "First Name" 
+              value = {this.state.userName}
+              onChange = {this.handleInputChange}
+              />
+              
+              <input
+              style = {boxStyle} 
+              type = "text" 
+              name = "lastName" 
+              placeholder = "Last Name" 
+              value = {this.state.userName}
+              onChange = {this.handleInputChange}
+              />
+              <input 
+              style = {boxStyle}
+              type = "text" 
+              name = "arrivalCity" 
+              placeholder = "Arrival City" 
+              value = {this.state.arrivalCity}
+              onChange = {this.handleInputChange}
+              />
+              <input 
+              style = {boxStyle}
+              type = "text" 
+              name = "arrivalState" 
+              placeholder = "Arrival State" 
+              value = {this.state.arrivalState}
+              onChange = {this.handleInputChange}
+              />
+                
+              </form>
+
+        <div class = "map"><Map
           google={this.props.google}
           zoom={8}
-          // style={mapStyles}
-          initialCenter={{ lat: 47.444, lng: -122.176}}
+          onClick={this.onMapClicked}
+          initialCenter={{ lat: 38.9072, lng: -77.0369}}
+          style = {style}
+         
         >
           {this.displayMarkers()}
 
@@ -75,9 +170,11 @@ export class App extends Component {
             </div>
         </InfoWindow>
 
-        </Map>
-    );
-  }
+        </Map></div>
+         
+        </div>
+        </div>
+          )}
 }
 
 const mapStateToProps  = (state) => {
