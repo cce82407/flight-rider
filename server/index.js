@@ -31,6 +31,19 @@ app.get("/api/cities", async (req, res, next) => {
 })
 
 
+// app.get("/api/cities/:arrivalState", async (req, res, next) => {
+//   try {
+//     const cities = await City.findAll({
+//       where: {
+//         cityState: req.params.arrivalState,
+//       }
+//     })
+//      res.send(cities)
+//   } catch (e) {
+//     (e) => console.error(e)
+//   }
+//  })
+
 app.get("/api/users", async (req, res, next) => {
   try {
     const users = await User.findAll();
@@ -60,15 +73,3 @@ async function startServer(){
 
 startServer()
 
-
-
-
-// const PORT = process.env.PORT || 3000
-// const startServer = () => {
-//   app.listen(PORT, () => {
-//   new Promise((res) => {
-//     console.log(chalk.green(`Server is now listening on PORT: ${PORT}`))
-//     res();
-//   })
-//   })
-// }

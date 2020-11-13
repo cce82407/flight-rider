@@ -6,40 +6,40 @@ const { City, User } = require("./server/models")
 const startingCities = [
   {
     cityName: "Charlotte",
-    cityState: "North Carolina",
+    cityState: "NC",
     latitude: 35.2271,
     longitude: -80.8431
   },
 
   {
     cityName: "Columbia",
-    cityState: "South Carolina",
+    cityState: "SC",
     latitude: 34.0007,
     longitude: -81.0348,
   },
 
   {
     cityName: "Asheville",
-    cityState: "North Carolina",
+    cityState: "NC",
     latitude: 35.596588,
     longitude: -82.554901,
   },
 
   {
     cityName: "Denver",
-    cityState: "Colorado",
+    cityState: "CO",
     latitude: 39.742043,
     longitude: -104.991531
   },
   {
     cityName: "Boulder",
-    cityState: "Colorado",
+    cityState: "CO",
     latitude: 40.0150,
     longitude: -105.2705
   },
   {
     cityName: "Aurora",
-    cityState: "Colorado",
+    cityState: "CO",
     latitude: 39.7294,
     longitude: -104.8319
   },

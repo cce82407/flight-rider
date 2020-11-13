@@ -11,20 +11,22 @@ export class App extends Component {
       selectedPlace: {},
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {},
-      userName: "",
-      arrivalCity: ""
+      userFirstName: "",
+      userLastName: "",
+      arrivalDate:"",
+      arrivalTime:"",
+      arrivalCity: "",
+      arrivalState: "",
     }
 
     this.displayMarkers = this.displayMarkers.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
   
   async componentDidMount() {
-        await this.props.dispatchLoadUsers()
-        await this.props.dispatchLoadCities()
-      
+        await this.props.dispatchLoadCities()    
       }
 
 
@@ -41,7 +43,6 @@ export class App extends Component {
 
 
   onMarkerClick (props, marker, e){
-    console.log(props)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -57,6 +58,28 @@ export class App extends Component {
         })
       }
     };
+
+    handleInputChange(event) {
+      const target = event.target;
+      const value = target.value;
+      const name = target.name;
+  
+      this.setState({
+        [name]: value,
+      });
+      console.log(event.target.value)
+    }    
+
+
+
+
+
+    // handleInputChange (ev) {
+    //   const { name, value } = ev.target;
+    //   this.setState({
+    //     [name]: value,
+    //   });
+    // }
 
   render() {
     console.log(this.props.cities)
@@ -112,9 +135,10 @@ export class App extends Component {
     }
     const textContainer = {
       backgroundColor: "#eb9788",
+      width: "100%"
     }
-    
-      
+
+   
     return (
       <div>
         <div style = {textContainer}>
@@ -122,21 +146,21 @@ export class App extends Component {
           <div style = {text}>Please enter your information in the boxes below to find a ride from the airport to your desired city.
           </div>
         
-          <form style = {form}>
-            <input
+          <form style = {form} onSubmit={() => {console.log(this.state.arrivalState)}}>
+            <label><input
             style = {boxStyle} 
             type = "text" 
-            name = "firstName" 
+            name = "userFirstName" 
             placeholder = "First Name" 
-            value = {this.state.userName}
+            value = {this.state.userFirstName}
             onChange = {this.handleInputChange}
-            />
+            /></label>
             <input
             style = {boxStyle} 
             type = "text" 
-            name = "lastName" 
+            name = "userLastName" 
             placeholder = "Last Name" 
-            value = {this.state.userName}
+            value = {this.state.userLastName}
             onChange = {this.handleInputChange}
             />
             <input 
@@ -150,7 +174,7 @@ export class App extends Component {
             <input 
             style = {boxStyle}
             type = "text" 
-            name = "arrival" 
+            name = "arrivalTime" 
             placeholder = "Arrival Time" 
             value = {this.state.arrivalTime}
             onChange = {this.handleInputChange}
@@ -171,7 +195,7 @@ export class App extends Component {
             value = {this.state.arrivalState}
             onChange = {this.handleInputChange}
             />
-            <button style = {submit}>Submit</button>
+            <input type = "submit" style = {submit} value = "Submit"/>
           </form>
 
           <div class = "map">

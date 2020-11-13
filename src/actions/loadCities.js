@@ -9,9 +9,10 @@ function loadCities(cities) {
 }
 
 export const loadCitiesDispatch = () => {
+  console.log("Load city thunk being called")
   return async (dispatch) => {
     return await axios
-      .get("/api/cities")
+      .get(`/api/cities`)
       .then((res) => {
         dispatch(loadCities(res.data))
       })
