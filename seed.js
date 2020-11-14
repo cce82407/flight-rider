@@ -5,44 +5,82 @@ const { City, User } = require("./server/models")
 
 const startingCities = [
   {
+    markerDisplay: "Charlotte, NC",
     cityName: "Charlotte",
     cityState: "NC",
     latitude: 35.2271,
-    longitude: -80.8431
+    longitude: -80.8431,
+    driverInfo: "Brian",
+    driverEmail: "Brian123@yahoo.com"
   },
 
   {
+    markerDisplay: "Columbia, SC",
     cityName: "Columbia",
-    cityState: "SC",
+    cityState: "NC",
     latitude: 34.0007,
     longitude: -81.0348,
+    driverInfo: "Crystal",
+    driverEmail: "Crystal129@me.com"
   },
 
   {
+    markerDisplay: "Asheville, NC",
     cityName: "Asheville",
     cityState: "NC",
     latitude: 35.596588,
     longitude: -82.554901,
+    driverInfo: "Anson",
+    driverEmail: "Anson@gmail.com"
   },
 
   {
+    markerDisplay: "Rockhill, SC",
+    cityName: "Rockhill",
+    cityState: "NC",
+    latitude: 34.9249,
+    longitude: -81.0251,
+    driverInfo: "Anthony",
+    driverEmail: "MyNy@gmail.com"
+  },
+
+  {
+    markerDisplay: "Spartanburg, SC",
+    cityName: "Spartanburg",
+    cityState: "NC",
+    latitude: 34.9496,
+    longitude: -81.9320,
+    driverInfo: "Anthony",
+    driverEmail: "MyNy@gmail.com"
+  },
+
+  {
+    markerDisplay: "Denver, CO",
     cityName: "Denver",
     cityState: "CO",
     latitude: 39.742043,
-    longitude: -104.991531
+    longitude: -104.991531,
+    driverInfo: "Jennifer",
+    driverEmail: "Jennifer@hotmail.com"
   },
   {
+    markerDisplay: "Boulder, CO",
     cityName: "Boulder",
     cityState: "CO",
     latitude: 40.0150,
-    longitude: -105.2705
+    longitude: -105.2705,
+    driverInfo: "Danny",
+    driverEmail: "Danny@aol.com",
   },
   {
+    markerDisplay: "Aurora, CO",
     cityName: "Aurora",
     cityState: "CO",
     latitude: 39.7294,
-    longitude: -104.8319
-  },
+    longitude: -104.8319,
+    driverInfo: "John",
+    driverEmail: "JSmith@mymail.com", 
+    },
 ]
 
 

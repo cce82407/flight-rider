@@ -23,6 +23,7 @@ export class App extends Component {
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.submitHandler = this.submitHandler.bind(this)
   }
   
   async componentDidMount() {
@@ -30,12 +31,14 @@ export class App extends Component {
       }
 
 
-  displayMarkers () {
-    return this.props.cities.map((city, index) => {
+  displayMarkers (cityArr) {
+    return cityArr.map((city, index) => {
       return <Marker key={index} id={index} position={{
        lat: city.latitude,
        lng: city.longitude
-     }} name= {city.cityName}
+     }} name= {city.markerDisplay}
+     driverInfo = {city.driverInfo}
+     contact = {city.driverEmail}
      onClick={this.onMarkerClick} 
     />
     })
@@ -70,19 +73,20 @@ export class App extends Component {
       console.log(event.target.value)
     }    
 
-
-
-
-
-    // handleInputChange (ev) {
-    //   const { name, value } = ev.target;
-    //   this.setState({
-    //     [name]: value,
-    //   });
-    // }
+    submitHandler (ev) {
+      
+      // const selectedCities = this.props.cities.filter((city => city.cityState === this.state.arrivalState))
+      // console.log(selectedCities)
+      // this.displayMarkers(selectedCities)
+      // ev.preventDefault()
+      // const center = this.props.cities.find(city => city.cityName === this.state.arrivalCity)
+      // this.render()
+    }
 
   render() {
-    console.log(this.props.cities)
+    const selectedCities = this.props.cities.filter(city => city.cityState === this.state.arrivalState)
+    const center = this.props.cities.find(city => city.cityName === this.state.arrivalCity)
+    console.log(center)
     const style = {
       width: '100%',
       height: '75%',
@@ -92,6 +96,8 @@ export class App extends Component {
     }
     const boxStyle = {
       margin:"10px",
+      dispaly: "block",
+      margin: "auto",
       borderColor: "black",
       borderStyle: "solid",
       borderWidth: "2px",
@@ -109,8 +115,11 @@ export class App extends Component {
     }
     const form = {
       dislpay: "flex",
-      alignItems:"row",
+      alignItems:"center",
+      position: "relative",
       justifyContent: "center",
+      flexFlow: "columnWrap",
+      // margin:"auto",
       topMargin: "30px",
       width: "100%",
     }
@@ -137,6 +146,10 @@ export class App extends Component {
       backgroundColor: "#eb9788",
       width: "100%"
     }
+    const infoStyles = {
+      fontSize: "10px",
+    }
+
 
    
     return (
@@ -145,16 +158,16 @@ export class App extends Component {
           <div style = {span}>Welcome to Flight Rider</div>
           <div style = {text}>Please enter your information in the boxes below to find a ride from the airport to your desired city.
           </div>
-        
-          <form style = {form} onSubmit={() => {console.log(this.state.arrivalState)}}>
-            <label><input
+          <div style = {form}>
+          <form onSubmit={() => {this.submitHandler}}>
+            {/* <input
             style = {boxStyle} 
             type = "text" 
             name = "userFirstName" 
             placeholder = "First Name" 
             value = {this.state.userFirstName}
             onChange = {this.handleInputChange}
-            /></label>
+            />
             <input
             style = {boxStyle} 
             type = "text" 
@@ -162,7 +175,7 @@ export class App extends Component {
             placeholder = "Last Name" 
             value = {this.state.userLastName}
             onChange = {this.handleInputChange}
-            />
+            /> */}
             <input 
             style = {boxStyle}
             type = "text" 
@@ -171,14 +184,14 @@ export class App extends Component {
             value = {this.state.arrivalDate}
             onChange = {this.handleInputChange}
             />
-            <input 
+            {/* <input 
             style = {boxStyle}
             type = "text" 
             name = "arrivalTime" 
             placeholder = "Arrival Time" 
             value = {this.state.arrivalTime}
             onChange = {this.handleInputChange}
-            />
+            /> */}
             <input 
             style = {boxStyle}
             type = "text" 
@@ -195,23 +208,27 @@ export class App extends Component {
             value = {this.state.arrivalState}
             onChange = {this.handleInputChange}
             />
-            <input type = "submit" style = {submit} value = "Submit"/>
+            {/* <input type = "submit" style = {submit} value = "Submit"/> */}
           </form>
-
+          </div>
           <div class = "map">
             <Map
             google={this.props.google}
-            zoom={8}
+            zoom={9}
             onClick={this.onMapClicked}
-            initialCenter={{ lat: 38.9072, lng: -77.0369}}
+            center={center ? {lat: center.latitude, lng: center.longitude} : { lat: 38.9072, lng: -77.0369}}
+            // center={{ lat: center.latitude, lng: center.longitude}}
             style = {style}  
             >
-            {this.displayMarkers()}
+            {this.displayMarkers(selectedCities)}
               <InfoWindow
                 marker={this.state.activeMarker}
-                visible={this.state.showingInfoWindow}>
+                visible={this.state.showingInfoWindow}
+                styles = {infoStyles}>.
                 <div>
-                  <h1>{this.state.selectedPlace.name}</h1>
+                  <h3>{this.state.selectedPlace.name}</h3>
+                  <p>{this.state.selectedPlace.driverInfo}</p>
+                  <p>{this.state.selectedPlace.contact}</p>
                 </div>
               </InfoWindow>
             </Map>
@@ -231,7 +248,7 @@ const mapStateToProps  = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatchLoadUsers: () => dispatch(loadUsersDispatch()),
-    dispatchLoadCities: () => dispatch(loadCitiesDispatch())
+    dispatchLoadCities: (state) => dispatch(loadCitiesDispatch(state))
   }
 }
 
