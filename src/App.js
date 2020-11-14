@@ -2,6 +2,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import React, { Component } from "react"
 import { connect } from "react-redux"
 
+
 import { loadCitiesDispatch, loadUsersDispatch } from "./actions"
 
 export class App extends Component {
@@ -129,7 +130,7 @@ export class App extends Component {
     }
     const span = {
       fontFamily: "Sacramento",
-      fontSize: "50px",
+      fontSize: "65px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -141,15 +142,13 @@ export class App extends Component {
       fontFamily: "Nanum Gothic",
       fontSize: "20px",
       display: "flex",
-      // alignItems: "center",
-      // justifyContent: "center",
       width: "100%",
       height: "30px",
       padding: "10px",
     }
     const textContainer = {
       backgroundColor: "#eb9788",
-      width: "100%"
+      width: "100%",
     }
     const infoStyles = {
       fontSize: "10px",
@@ -159,12 +158,21 @@ export class App extends Component {
       height: "30px",
       width: "100%"
     }
+    const img = {
+      borderRadius: "10px",
+      width: "125px",
+      height: "75px",
+      margin: "10px",
+      boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+    }
 
    
     return (
       <div>
         <div style = {textContainer}>
-          <div style = {span}>Welcome to Flight Rider</div>
+          <div style = {span}><img style = {img} src="https://media.istockphoto.com/vectors/airplane-line-path-vector-icon-of-air-plane-flight-route-with-start-vector-id1042534060?k=6&m=1042534060&s=612x612&w=0&h=_RxwCObWp23fGjWIPiLc6AmfLnLFGGWo_zTJ1tG4zeo=" alt="Plane"></img>Welcome to Flight Rider<img style = {img} src="https://www.pngitem.com/pimgs/m/327-3272679_soccermom-logo-family-car-travel-icon-hd-png.png" alt="Car"></img></div>
+          
+          
             
           <div style = {text}>Enter your information in the boxes below to find a ride from the airport to your desired city.</div>
           
@@ -216,10 +224,10 @@ export class App extends Component {
             />
             <input
             style = {boxStyle} 
-            type = "text" 
+            type = "email" 
             name = "userEmail" 
             placeholder = "Email" 
-            value = {this.state.userLastName}
+            value = {this.state.userEmail}
             onChange = {this.handleInputChange}
             />
             <input 
