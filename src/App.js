@@ -11,12 +11,16 @@ export class App extends Component {
       selectedPlace: {},
       showingInfoWindow: false,
       activeMarker: {},
-      userName: "",
-      userEmail: "",
       arrivalDate:"",
       arrivalTime:"",
       arrivalCity: "",
       arrivalState: "",
+      userName: "",
+      userEmail: "",
+      providerArrDate:"",
+      providerArrTime:"",
+      providerArrCity:"",
+      providerArrState:"",
     }
 
     this.displayMarkers = this.displayMarkers.bind(this);
@@ -137,10 +141,11 @@ export class App extends Component {
       fontFamily: "Nanum Gothic",
       fontSize: "20px",
       display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      // alignItems: "center",
+      // justifyContent: "center",
       width: "100%",
-      height: "30px"
+      height: "30px",
+      padding: "10px",
     }
     const textContainer = {
       backgroundColor: "#eb9788",
@@ -150,46 +155,19 @@ export class App extends Component {
       fontSize: "10px",
     }
 
+    const padding = {
+      height: "30px",
+      width: "100%"
+    }
 
    
     return (
       <div>
         <div style = {textContainer}>
           <div style = {span}>Welcome to Flight Rider</div>
-          <input 
-            style = {boxStyle}
-            type = "text" 
-            name = "arrivalDate" 
-            placeholder = "Arrival Date" 
-            value = {this.state.arrivalDate}
-            onChange = {this.handleInputChange}
-            />
-            <input 
-            style = {boxStyle}
-            type = "text" 
-            name = "arrivalTime" 
-            placeholder = "Arrival Time" 
-            value = {this.state.arrivalTime}
-            onChange = {this.handleInputChange}
-            />
-            <input 
-            style = {boxStyle}
-            type = "text" 
-            name = "arrivalCity" 
-            placeholder = "Arrival City" 
-            value = {this.state.arrivalCity}
-            onChange = {this.handleInputChange}
-            />
-            <input 
-            style = {boxStyle}
-            type = "text" 
-            name = "arrivalState" 
-            placeholder = "Arrival State" 
-            value = {this.state.arrivalState}
-            onChange = {this.handleInputChange}
-            />
             
-          <div style = {text}>Please enter your information in the boxes below to find a ride from the airport to your desired city.</div>
+          <div style = {text}>Enter your information in the boxes below to find a ride from the airport to your desired city.</div>
+          
           <input 
             style = {boxStyle}
             type = "text" 
@@ -222,9 +200,10 @@ export class App extends Component {
             value = {this.state.arrivalState}
             onChange = {this.handleInputChange}
             />
+            <div class = {padding}></div>
           <div style = {text}> If you would like to provide a ride to someone travelling from the same city, please enter your information in the boxes below and select "Save."
           </div>
-          
+
           <div style = {form}>
           <form onSubmit={() => {this.submitHandler}}>
             <input
@@ -246,33 +225,33 @@ export class App extends Component {
             <input 
             style = {boxStyle}
             type = "text" 
-            name = "arrivalDate" 
+            name = "providerArrDate" 
             placeholder = "Arrival Date" 
-            value = {this.state.arrivalDate}
+            value = {this.state.providerArrDate}
             onChange = {this.handleInputChange}
             />
             <input 
             style = {boxStyle}
             type = "text" 
-            name = "arrivalTime" 
+            name = "providerArrTime" 
             placeholder = "Arrival Time" 
-            value = {this.state.arrivalTime}
+            value = {this.state.providerArrTime}
             onChange = {this.handleInputChange}
             />
             <input 
             style = {boxStyle}
             type = "text" 
-            name = "arrivalCity" 
+            name = "providerArrCity" 
             placeholder = "Arrival City" 
-            value = {this.state.arrivalCity}
+            value = {this.state.providerArrCity}
             onChange = {this.handleInputChange}
             />
             <input 
             style = {boxStyle}
             type = "text" 
-            name = "arrivalState" 
+            name = "providerArrState" 
             placeholder = "Arrival State" 
-            value = {this.state.arrivalState}
+            value = {this.state.providerArrState}
             onChange = {this.handleInputChange}
             />
             <input type = "submit" style = {submit} value = "Save"/>
@@ -281,9 +260,9 @@ export class App extends Component {
           <div class = "map">
             <Map
             google={this.props.google}
-            zoom={9}
+            zoom={7}
             onClick={this.onMapClicked}
-            center={center ? {lat: center.latitude, lng: center.longitude} : { lat: 38.9072, lng: -77.0369}}
+            center={center ? {lat: center.latitude, lng: center.longitude} : { lat: 29.7604, lng: -95.3698}}
             // center={{ lat: center.latitude, lng: center.longitude}}
             style = {style}  
             >

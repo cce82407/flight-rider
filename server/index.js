@@ -61,7 +61,7 @@ async function startServer(){
   try {
     console.log(chalk.green(`Database is Syncing`))
     await db.sync()
-    const PORT = process.env.PORT || 3000
+    const PORT = process.env.PORT || 4000
     await app.listen(PORT, () => {
       console.log(chalk.green(`Listening on port: ${PORT}`))
     })
