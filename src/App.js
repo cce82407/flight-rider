@@ -11,8 +11,8 @@ export class App extends Component {
       selectedPlace: {},
       showingInfoWindow: false,
       activeMarker: {},
-      userFirstName: "",
-      userLastName: "",
+      userName: "",
+      userEmail: "",
       arrivalDate:"",
       arrivalTime:"",
       arrivalCity: "",
@@ -97,7 +97,7 @@ export class App extends Component {
     const boxStyle = {
       margin:"10px",
       dispaly: "block",
-      margin: "auto",
+      // margin: "auto",
       borderColor: "black",
       borderStyle: "solid",
       borderWidth: "2px",
@@ -119,7 +119,7 @@ export class App extends Component {
       position: "relative",
       justifyContent: "center",
       flexFlow: "columnWrap",
-      // margin:"auto",
+      margin:"auto",
       topMargin: "30px",
       width: "100%",
     }
@@ -131,7 +131,7 @@ export class App extends Component {
       justifyContent: "center",
       width: "100%",
       height: "50px",
-      padding: "10px",
+      padding: "20px",
     }
     const text = {
       fontFamily: "Nanum Gothic",
@@ -156,27 +156,7 @@ export class App extends Component {
       <div>
         <div style = {textContainer}>
           <div style = {span}>Welcome to Flight Rider</div>
-          <div style = {text}>Please enter your information in the boxes below to find a ride from the airport to your desired city.
-          </div>
-          <div style = {form}>
-          <form onSubmit={() => {this.submitHandler}}>
-            {/* <input
-            style = {boxStyle} 
-            type = "text" 
-            name = "userFirstName" 
-            placeholder = "First Name" 
-            value = {this.state.userFirstName}
-            onChange = {this.handleInputChange}
-            />
-            <input
-            style = {boxStyle} 
-            type = "text" 
-            name = "userLastName" 
-            placeholder = "Last Name" 
-            value = {this.state.userLastName}
-            onChange = {this.handleInputChange}
-            /> */}
-            <input 
+          <input 
             style = {boxStyle}
             type = "text" 
             name = "arrivalDate" 
@@ -184,14 +164,14 @@ export class App extends Component {
             value = {this.state.arrivalDate}
             onChange = {this.handleInputChange}
             />
-            {/* <input 
+            <input 
             style = {boxStyle}
             type = "text" 
             name = "arrivalTime" 
             placeholder = "Arrival Time" 
             value = {this.state.arrivalTime}
             onChange = {this.handleInputChange}
-            /> */}
+            />
             <input 
             style = {boxStyle}
             type = "text" 
@@ -208,7 +188,94 @@ export class App extends Component {
             value = {this.state.arrivalState}
             onChange = {this.handleInputChange}
             />
-            {/* <input type = "submit" style = {submit} value = "Submit"/> */}
+            
+          <div style = {text}>Please enter your information in the boxes below to find a ride from the airport to your desired city.</div>
+          <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalDate" 
+            placeholder = "Arrival Date" 
+            value = {this.state.arrivalDate}
+            onChange = {this.handleInputChange}
+            />
+            <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalTime" 
+            placeholder = "Arrival Time" 
+            value = {this.state.arrivalTime}
+            onChange = {this.handleInputChange}
+            />
+            <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalCity" 
+            placeholder = "Arrival City" 
+            value = {this.state.arrivalCity}
+            onChange = {this.handleInputChange}
+            />
+            <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalState" 
+            placeholder = "Arrival State" 
+            value = {this.state.arrivalState}
+            onChange = {this.handleInputChange}
+            />
+          <div style = {text}> If you would like to provide a ride to someone travelling from the same city, please enter your information in the boxes below and select "Save."
+          </div>
+          
+          <div style = {form}>
+          <form onSubmit={() => {this.submitHandler}}>
+            <input
+            style = {boxStyle} 
+            type = "text" 
+            name = "userName" 
+            placeholder = "Name" 
+            value = {this.state.userName}
+            onChange = {this.handleInputChange}
+            />
+            <input
+            style = {boxStyle} 
+            type = "text" 
+            name = "userEmail" 
+            placeholder = "Email" 
+            value = {this.state.userLastName}
+            onChange = {this.handleInputChange}
+            />
+            <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalDate" 
+            placeholder = "Arrival Date" 
+            value = {this.state.arrivalDate}
+            onChange = {this.handleInputChange}
+            />
+            <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalTime" 
+            placeholder = "Arrival Time" 
+            value = {this.state.arrivalTime}
+            onChange = {this.handleInputChange}
+            />
+            <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalCity" 
+            placeholder = "Arrival City" 
+            value = {this.state.arrivalCity}
+            onChange = {this.handleInputChange}
+            />
+            <input 
+            style = {boxStyle}
+            type = "text" 
+            name = "arrivalState" 
+            placeholder = "Arrival State" 
+            value = {this.state.arrivalState}
+            onChange = {this.handleInputChange}
+            />
+            <input type = "submit" style = {submit} value = "Save"/>
           </form>
           </div>
           <div class = "map">

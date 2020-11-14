@@ -40,8 +40,8 @@ const startingCities = [
     cityState: "NC",
     latitude: 34.9249,
     longitude: -81.0251,
-    driverInfo: "Anthony",
-    driverEmail: "MyNy@gmail.com"
+    driverInfo: "Angela",
+    driverEmail: "Angel@gmail.com"
   },
 
   {
@@ -81,6 +81,54 @@ const startingCities = [
     driverInfo: "John",
     driverEmail: "JSmith@mymail.com", 
     },
+    {
+      markerDisplay: "Colorado Springs, CO",
+      cityName: "Colorado Springs",
+      cityState: "CO",
+      latitude: 38.8339,
+      longitude: -104.8214,
+      driverInfo: "Robert",
+      driverEmail: "Rtennies@ymail.com", 
+      },
+      {
+        markerDisplay: "Newark, NJ",
+        cityName: "Newark",
+        cityState: "NJ",
+        latitude: 40.7357,
+        longitude: -74.1724,
+        driverInfo: "Kesha",
+        driverEmail: "KeshaNight@gmail.com", 
+        },
+
+        {
+          markerDisplay: "New Brunswick, NJ",
+          cityName: "New Brunswick",
+          cityState: "NJ",
+          latitude: 40.4862,
+          longitude: -74.4518,
+          driverInfo: "Juan",
+          driverEmail: "JuanP@gmail.com", 
+          },
+
+          {
+            markerDisplay: "New York, NY",
+            cityName: "New York",
+            cityState: "NJ",
+            latitude: 40.7128,
+            longitude: -74.0060,
+            driverInfo: "William",
+            driverEmail: "WillI@hotmail.com", 
+            },
+
+            {
+              markerDisplay: "Yonkers, NY",
+              cityName: "Yonkers",
+              cityState: "NJ",
+              latitude: 40.9312,
+              longitude: -73.8987,
+              driverInfo: "Chanelle",
+              driverEmail: "Chantel@hotmail.com", 
+              },
 ]
 
 
